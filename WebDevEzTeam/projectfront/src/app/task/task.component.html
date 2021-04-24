@@ -1,0 +1,60 @@
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+
+<body>
+    <div class="form-wrapper">
+    <form>
+      <div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Task Name</label>
+          <input type="text" [(ngModel)]="nameOfTask" class="form-control" style="width: 20%;" name="nameOfTask" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name of the task">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your private information with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Status of your Task</label>
+          <input type="text" [(ngModel)]="statusOfTask" class="form-control" style="width: 20%" name="statusOfTask" id="exampleInputPassword1" placeholder="Status">
+        </div>
+        <button (click)="createNewTask()" (click)="increaseTasknumber()" class="btn btn-primary" (click)="getPaginatedTasksInit()">Submit</button>
+        <button *ngIf="!gettaskspaginatedpresed"(click)="getPaginatedTasksInit()" class="btn btn-primary">My Tasks</button>
+        <button *ngIf="gettaskspaginatedpresed" (click)="hidePaginatedTasks()" class="btn btn-primary">Hide</button><br>
+        <button class="btn btn-primary" *ngIf="nextPage != ''" (click)="getPagintedTasksNext()">Next</button>
+        <button class="btn btn-primary" *ngIf="prevPage != ''" (click)="getPaginatedTasksPrev()">Previous</button>
+        </div>
+      </form>
+
+      <div class="tasks">
+          <div *ngFor="let task of tasks">
+            <div class="task" *ngIf="gettaskspaginatedpresed">
+                <ng-container *ngIf="task.id !== cur_task_id">
+                  <label for="exampleInputEmail1">Task Name</label><p class="font-weight-light" style="color:tomato">{{task.name}}</p>
+                  <label for="exampleInputEmail1">Task Created Time</label><p class="font-weight-light" style="color: red">{{task.created_at}}</p>
+                  <label for="exampleInputEmail1">Task Status</label><p class="font-weight-light" style="color:tomato">{{task.status}}</p>
+                  <button (click)="chooseTask(task)" class="btn btn-info">Update</button>
+                  <button (click)="deleteTask(task)" class="btn btn-danger">Delete</button>
+                  <!-- <div class="taski"></div> -->
+                </ng-container>
+                <ng-container *ngIf="task.id == cur_task_id">
+                    <div class="panel-heading">  
+                        <h4>Task Name</h4>
+                      </div>
+                  <input type="text" class="form-control" style="width: 20%" [(ngModel)] ="task.name">
+                  <div class="panel-heading">  
+                      <h4>Task Status</h4>
+                    </div>
+                  <input type="text" class="form-control" [(ngModel)]="task.status" style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; width: 20%;"> <br>
+                  <div class="panel-heading">
+                    <h4>Task created time : </h4>
+                  </div>
+                  <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 13px; color:tomato">{{task.created_at}}</p>
+                  <button class="btn btn-danger" (click)="hidePaginatedTasks()" (click)="updateTaskI(task)">Save</button>
+                </ng-container>
+                <div class="taski"></div>
+            </div>
+            <div class="taski"></div>
+          </div>
+        </div>
+    </div>
+</body>

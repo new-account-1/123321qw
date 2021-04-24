@@ -1,0 +1,31 @@
+<head>
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+
+<body>
+    <ng-container *ngIf="!registered">
+            <div class="wrapper">
+                    <img src="https://wallpaperplay.com/walls/full/5/3/e/32721.jpg" alt="pic" class="pic">
+                    <img src="https://hdqwalls.com/download/fitness-gym-girl-nb-1920x1080.jpg" alt="pic" class="pic">
+                    <img src="https://wallpaperplay.com/walls/full/7/3/5/32715.jpg" alt="pic" class="pic">
+                </div>
+            <form id="registration" style="background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);">
+                <h1>Sign Up</h1>
+                <fieldset id="inputs">
+                    <i class="far fa-user"></i><input id="username" type="text" placeholder="Username" name="username" [(ngModel)]="login" autofocus required> <br>
+                    <i class="fa fa-envelope" aria-hidden="true"></i><input id="repassword" type="text" placeholder="Email" name="repassword" [(ngModel)]="email" autofocus required> <br>
+                    <i class="fas fa-key"></i><input id="password" type="password" placeholder="Password" name="password" [(ngModel)]="password" autofocus required> <br>
+                </fieldset>
+                <fieldset id="actions">
+                    <input type="submit" id="submit" value="Register" (click)="register()">
+                    <a href="http://localhost:4200/sign-in">Log In</a>
+                </fieldset>
+            </form>
+    </ng-container>
+    <ng-container *ngIf="registered">
+        <div class="wrapper">
+            <img src="https://wallpapercave.com/wp/wp1842467.jpg" alt="welcome pic" class="pic">
+        </div>
+    </ng-container>
+</body>

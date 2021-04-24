@@ -1,0 +1,45 @@
+.exercise__category{
+    border: 1px solid black;
+}
+
+.purple-border textarea {
+    border: 1px solid #ba68c8;
+}
+.purple-border .form-control:focus {
+    border: 1px solid #ba68c8;
+    box-shadow: 0 0 0 0.2rem rgba(186, 104, 200, .25);
+}
+
+.green-border-focus .form-control:focus {
+    border: 1px solid #8bc34a;
+    box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+}
+
+body {
+    overflow: auto;
+    height: 100%;
+}
+
+.users:last-child {
+    margin-bottom: 4%; 
+}
+
+.baget {
+    margin-bottom: 4%;
+}
+
+
+/* .form-wrapper {
+    background-image:  url("https://images.wallpaperscraft.com/image/surface_dark_background_texture_50754_1920x1080.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: fixed;
+    background-attachment: fixed;
+    overflow: hidden;
+    height: 3500px;
+    font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;
+  }
+
+  p, label, small, h4, div {
+    color: white;
+} */

@@ -1,0 +1,34 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+<div class="form-wrapper">
+<div class = "test">
+      <div *ngIf="!testTaken">
+            <div class="move">
+                  <label>What is your weight in kg's? <input type="number" class="form-control" style="width: 300px;" placeholder="Type numbers" [(ngModel)]="weightString"></label> <br>
+                  <label>What is your height in centimeters? <input type="number" class="form-control" style="width: 300px;"  placeholder="Type numbers" [(ngModel)]="heightString"></label> <br>
+                  <label>Do you have blood pressure issue? <input type="text" class="form-control" style="width: 300px;" placeholder="It's: high/low or No Issues" [(ngModel)]="bloodPressure"></label> <br>
+                  <label>Do you have any allergies? <input type="text" class="form-control" style="width: 300px;" placeholder="Type of allergie/ No allergies" [(ngModel)]="allergies"></label> <br> <br>
+                  <button class="btn btn-success" (click)="takeTest()">Submit</button><br/>
+            </div>
+      </div>
+
+      <div class="move" *ngIf="testTaken">
+      <h4>Thank you for taking test</h4> <br> <br>
+      <h3>Your BMI Test score is: <span style="color: rgb(255, 255, 0)" *ngIf = "overAllBodyTest < 18.5">{{overAllBodyTest}}</span>
+                                    <span style="color: rgb(6, 255, 6)" *ngIf = "overAllBodyTest > 18.4 && overAllBodyTest < 25">{{overAllBodyTest}}</span>
+                                    <span style="color: orange" *ngIf = "overAllBodyTest > 24.9 && overAllBodyTest < 30">{{overAllBodyTest}}</span>
+                                    <span style="color: red" *ngIf = "overAllBodyTest > 30">{{overAllBodyTest}}</span></h3><br>
+                                    
+      <h2 style="padding-right: 25%;" *ngIf = "overAllBodyTest < 18.5">We recommend you to use <br>Beginner Exercises Tab, and Keto Diet.</h2>
+      <h2 style="padding-right: 25%;" *ngIf = "overAllBodyTest > 18.4 && overAllBodyTest < 25">We recommend you to use <br>Continuing Exercises Tab, and Atkins Diet.</h2>
+      <h2 style="padding-right: 25%;" *ngIf = "overAllBodyTest > 24.9 && overAllBodyTest < 30">We recommend you to use <br>Continuing Exercises Tab, and Vegeterian Diet.</h2>
+      <h2 style="padding-right: 25%;" *ngIf = "overAllBodyTest > 30">We recommend you to use <br>Beginner Exercises Tab, and Vegan Diet.</h2>
+      <h3><a routerLink="/exercises" routerLinkActive="active" class="btn btn-primary btn-lg">Exercises Category</a></h3>
+      <button class="btn btn-danger" (click)="takeTestAgain()">Take Test Again</button>
+      </div>
+</div>
+
+</div>

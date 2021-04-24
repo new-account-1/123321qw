@@ -1,0 +1,20 @@
+.btn{
+    padding:5px 5px;
+    border: 1px white solid;
+    border-radius: 10px;
+}
+
+.title-text{
+    display: block;
+    z-index: -10;
+    width: 100%;
+	position: relative;
+	font: 50px Helvetica, Sans-Serif;
+	letter-spacing: 0px;
+    color: rgba(0,0,255,0.5);
+    padding: 3% calc(45% - 250px);
+}
+.body-text{
+    font: 20px Helvetica, Sans-Serif;
+    padding: 0 5%;
+}

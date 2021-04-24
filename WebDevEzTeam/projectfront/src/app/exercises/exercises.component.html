@@ -1,0 +1,36 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+<div class="form-wrapper">
+    <div class="exercise__categories">
+        <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 4%;">Exercise Categories List:</p> <br>
+        <div *ngFor = "let excategory of exerciseCategories">
+          <div>
+            <br>
+              <button class="btn btn-primary"  (click)="showExercises(excategory)" (click)="getExercises(excategory)">{{excategory.name}}</button> <br>
+          </div>
+        </div>
+      </div>
+      <div class="temp">
+        <div *ngIf="targetExCat">
+            <div *ngFor="let exercise of exercises">
+              <br>
+              <button class="btn btn-success"  (click)="chooseExercise(exercise)" (click)="getExerciseDetail(targetExCat, exercise)">{{exercise.title}}</button>
+            </div>
+            <br>
+            <button class="btn btn-danger"  (click)="hideExercises()">Back</button>
+        </div>
+        <div *ngIf="targetExCat">
+          <div *ngIf="targetExercise" >
+            <br>
+            <p>Exercise Name: {{resultExercise.title}}</p> <br>
+            <img [src]='resultExercise.photo_link' alt="" style="height: 50%; width: 50%"><br>
+            <p>Needed Equiment / Dress: {{resultExercise.equipment_needed}}</p> <br>
+            <h5>Tips on exercise: {{resultExercise.how_to_do_tips}}</h5> <br>
+            <div class="diety"></div>
+          </div>
+        </div>
+      </div>
+</div>

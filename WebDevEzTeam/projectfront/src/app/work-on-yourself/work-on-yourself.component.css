@@ -1,0 +1,22 @@
+.form-wrapper {
+    background-image:  url("https://images.wallpaperscraft.com/image/surface_dark_background_texture_50754_1920x1080.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: fixed;
+    background-attachment: fixed;
+    overflow: hidden;
+    height: 1500px;
+    font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;
+}
+
+.body-text{
+    font: 20px Helvetica, Sans-Serif;
+    padding: 0 5%;
+}
+
+.btn{
+    padding:5px 5px;
+    border: 1px white solid;
+    border-radius: 10px;
+    margin-left: 5%;
+}

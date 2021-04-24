@@ -1,0 +1,20 @@
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+  integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+
+<div class="form-wrapper">
+<ng-container>
+  <div class="supplements">
+    <div *ngFor = "let suppl of supplements">
+      <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 1.5%; margin-top: 5%; width: 25%"><button class="btn btn-primary" style="width: 100%;">Supplement Title:</button> &nbsp; {{suppl.title}}</p><br>
+      <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 1.5%; width: 25%"><button class="btn btn-danger" style="width: 100%;">Supplement Description:</button> </p>
+      <p  style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 1.5%;  width: 80%">{{suppl.description}}</p> <br>
+    </div>
+  </div>
+</ng-container>
+<button class="btn btn-primary" *ngIf="prevPage != ''" (click)="getSupplementsPaginatedPrev()">Previous</button>
+<button class="btn btn-primary" *ngIf="nextPage != ''" (click)="getSupplementsPaginatedNext()">Next</button>
+<div class="users"></div>
+</div>

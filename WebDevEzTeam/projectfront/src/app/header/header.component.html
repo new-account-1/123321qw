@@ -1,0 +1,54 @@
+<head>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<header>
+    <nav class="group_of_elements" *ngIf="scrWidth>=830">
+        <ul>
+            <li class="header_elements"><a routerLink="./main-menu" roterLinkActive="active">Home</a></li>
+            <li class="header_elements"><a routerLink="./work-on-yourself" roterLinkActive="active">Work On Yourself</a>
+                <ul>
+                    <li *ngIf="logged"><a routerLink ="./test" routerLinkActive="active">Take a Test</a></li>
+                    <li ><a routerLink ="./dietary" routerLinkActive="active">Diets</a></li>
+                    <li ><a routerLink ="./exercises" routerLinkActive="active">Exercises</a></li>
+                    <li ><a routerLink ="./supplement-info" routerLinkActive="active">Supplement Info</a></li>
+                </ul>
+            </li>
+            <li class="header_elements"><a routerLink ="./supplement-info" routerLinkActive="active">Fitness Supplements</a>
+                <ul>
+                    <li ><a href="http://sportcenter.kz/category/protein/?promo_id=783371" target="_blank">Protein</a></li>
+                    <li ><a href="http://sportcenter.kz/category/zhiroszhigatel/?promo_id=783371" target="_blank">Fat Burners</a></li>
+                    <li ><a href="http://sportcenter.kz/category/energetik-no/?promo_id=783371" target="_blank">Pre-Workout</a></li>
+                </ul>
+            </li>
+            <li *ngIf="!logged" class="header_elements"><a routerLink="./sign-in" routerLinkActive="active">Login</a></li>
+            <li *ngIf="!logged" class="header_elements"><a routerLink="./sign-up" routerLinkActive ="active">Create new account</a></li>
+            <li *ngIf="logged" class="header_elements"><a href="">{{userName}}</a>
+                <ul>
+                    <li><a routerLink='./tasks' routerLinkActive="active">My Tasks</a></li>
+                    <li><a routerLink="./profile" routerLinkActive="active">Profile</a></li>
+                    <li *ngIf="isadmin && scrWidth >1024"><a routerLink="./adminpanel" routerLinkActive="active">Admin Panel</a></li>
+                </ul>
+            </li>
+            <li *ngIf="logged" class="header_elements" (click)="logout()"><a href="">Logout</a></li>
+        </ul>
+    </nav>
+    <nav class="epic" *ngIf="scrWidth < 830">
+        <div class="mobile-header group_of_elements">
+            <a routerLink="./main-menu" routerLinkActive="active">Press F to Stay Fit!</a>
+            <ul>
+                <li class="header_elements"><a>Menu</a>
+                    <ul>
+                        <li><a routerLink="./work-on-yourself" routerLinkActive="active">Work On Yourself</a></li>
+                        <li *ngIf="!logged"><a routerLink="./sign-in" routerLinkActive="active">Login</a></li>
+                        <li *ngIf="!logged"><a routerLink="./sign-up" routerLinkActive ="active">Create new account</a></li>
+                        <li *ngIf="logged"><a routerLink="./my-account" routerLinkActive ="active">{{userName}}</a></li>
+                        <li *ngIf="logged" (click)="logout()"><a href="">Logout</a></li>
+                        <!-- <li>somthing</li> -->
+                        <li><a routerLink="./contacts" routerLinkActive="active">Contacts</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

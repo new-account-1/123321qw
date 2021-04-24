@@ -1,0 +1,31 @@
+/* .exercise__categories{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+} */
+.temp{
+    display: flex;
+    justify-content: space-evenly;
+}
+.temp:first-child{
+    align-items: flex-start;
+}
+
+.form-wrapper {
+    background-image:  url("https://images.wallpaperscraft.com/image/surface_dark_background_texture_50754_1920x1080.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: fixed;
+    background-attachment: fixed;
+    overflow: hidden;
+    height: 1500px;
+    font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;
+  }
+  
+  p, label, small, h4, div {
+      color: white;
+  }
+
+  .diety{
+      margin-bottom: 4%;
+  }

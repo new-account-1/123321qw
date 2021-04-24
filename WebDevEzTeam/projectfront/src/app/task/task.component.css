@@ -1,0 +1,28 @@
+/* .form-wrapper {
+    background-image:  url("https://images.wallpaperscraft.com/image/surface_dark_background_texture_50754_1920x1080.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: fixed;
+    background-attachment: fixed;
+    overflow: hidden;
+    height: 1500px;
+    font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;
+  }
+  
+  p, label, small, h4 {
+      color: white;
+  } */
+
+.task{
+    border: 1px solid black;
+    padding: 2% 0;
+}
+.task:last-child{
+    margin-bottom: 4%;
+}
+#tName, #tStatus {
+    color: white;
+}
+.taski:last-child{
+    margin-bottom: 4%;
+}

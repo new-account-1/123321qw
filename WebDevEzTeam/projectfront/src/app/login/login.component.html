@@ -1,0 +1,28 @@
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<body>
+  <ng-container *ngIf="logged">
+      <div class="wrapper">
+        <img src="http://www.yogafleet.com/images/1/Fitness-Wallpaper-40.jpg" alt="No Pain No Gain" class="pic">
+      </div>
+  </ng-container>
+    <ng-container *ngIf="!logged">
+        <div class="wrapper">
+            <img src="https://hdqwalls.com/download/fitness-gym-girl-nb-1920x1080.jpg" alt="pic" class="pic">
+          </div>
+        <form id="login" style="background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);">
+            <h1>Log In</h1>
+            <fieldset id="inputs">
+                <input id="username" type="text" [(ngModel)]="login" placeholder="Username" name="username" autofocus required>
+                <input id="password" type="password" [(ngModel)]="password" placeholder="Password" name="password" required>
+            </fieldset>
+            <fieldset id="actions">
+                <input type="submit" (click)="auth()" id="submit" value="Log in">
+                <!-- <a (click)="auth()" id="submit">Log in</a> -->
+                <a href="http://localhost:4200/sign-up">Register</a>
+            </fieldset>
+        </form>
+    </ng-container>
+</body>

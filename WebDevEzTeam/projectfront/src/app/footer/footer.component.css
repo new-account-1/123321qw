@@ -1,0 +1,33 @@
+.footer{
+    padding-top: 1%;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: black;
+    color: rgb(226, 219, 219);
+    font: 12px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;
+    padding-bottom: 5px;
+}
+
+.footer a {
+    color: darkseagreen;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: rgb(81, 248, 81);
+}
+
+.footer .contact {
+    margin-left: 1.8%;
+}
+.footer .mail {
+    margin-left: 5%;
+}
+.footer .phone {
+    margin-left: 5%;
+}
+.footer .tgg {
+    margin-left: 5%;
+}

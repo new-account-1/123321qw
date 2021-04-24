@@ -1,0 +1,150 @@
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+
+
+
+<body>
+    <div class="form-wrapper">
+    <div class="admin__buttons">
+        <button class="btn btn-primary" (click)="manipulateExerciseCategories()">Exercise Categories</button>
+        <button class="btn btn-warning" (click)="manipulateSupplements()" style="margin-left: 15%;">Supplements</button>
+        <button class="btn btn-success" (click)="manipulateDiets()" style="margin-left: 15%;">Diets</button>
+        <button class="btn btn-secondary" (click)="showUsersList()" style="margin-left: 15%;">Userlist</button>
+      </div>
+      
+      <ng-container *ngIf="showUserListPressed">
+        <div class="users" *ngFor="let user of userlist" style="margin-left: 61.5%;">
+          <br><br>
+            <div style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;"><button class="btn btn-info" style="width: 150px;">Username:</button> {{user.username}} </div>
+      
+            <div style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;"><button class="btn btn-primary" style="width: 150px;">Email:</button> {{user.email}} </div>
+      
+            <div style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;"><button class="btn btn-danger" style="width: 150px;">Admin privileges:</button> {{user.is_superuser}} </div> <br>
+          
+        </div>
+      </ng-container>
+      
+      <ng-container *ngIf="manipulateExCatPressed">
+          <div style="margin-top: 2%;">
+              <input type="text" class="form-control" style="width: 380px;"  placeholder="Enter exercise category" name="newExCategory" id="newExCategory" [(ngModel)] = "exerciseCategoryName"> <br> <br>
+              <button class="btn btn-primary" (click)="createExerciseCategory()">Create Exercise Category</button><br>
+            </div>
+          <br>
+          
+          <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">Exercise Categories List:</p> <br>
+          
+          <div class="exercise__categories">
+            <div *ngFor = "let excategory of exerciseCategories">
+              <ng-container *ngIf="updateExerciseCategoryPressed">
+                <input type="text" style="width: 20%;" class="form-control" [(ngModel)] ="excategory.name"> <br>
+                <button class="btn btn-success" (click)="updateExerciseCategory(excategory)" >Save To Backend</button>
+                <button class="btn btn-danger" (click)="deleteExerciseCategory(excategory)" style="margin-left: 1%;">Delete From Backend</button> <br> <br>
+              </ng-container>
+          
+              <ng-container *ngIf="!updateExerciseCategoryPressed">
+                <button class="btn btn-info" style="width: 20%;"  (click)="manipulateExercises(excategory)" (click)="getExercisesList(excategory.id)">{{excategory.id}}. {{excategory.name}}</button>
+              </ng-container>
+            </div>
+            <br>
+            <button class="btn btn-danger"  *ngIf="!updateExerciseCategoryPressed" (click)="showExerciseCategories()">Update Exercise Categories</button>
+            <button class="btn btn-primary" *ngIf="updateExerciseCategoryPressed" (click)="getExerciseCategoryList()" (click)="showExerciseCategories()">Back To List</button>
+          </div>
+          
+          <div *ngIf="targetExCategory"> <br>
+            <br> <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">Please fill all fields to create Exercise</p><br>
+            <input type="text" class="form-control" style="width: 20%;" placeholder="Exercise title" [(ngModel)]="exerciseName">
+            <input type="text" class="form-control" style="width: 20%;" placeholder="Exercise Photo url link" [(ngModel)]="exerciseLink">
+            <input type="text" class="form-control" style="width: 20%;" placeholder="Exercise Equipment needed" [(ngModel)]="exerciseEquipment">
+            <input type="text" class="form-control" style="width: 20%;" placeholder="Exercise How to do tips" [(ngModel)]="exerciseHowTodo"> <br>
+            <button class="btn btn-success" (click)="createExercise(targetExCategory)">Create Exercise</button> <br><br>
+            
+            <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 16px; margin-bottom: 5%;">Exercises :</p>
+            <ng-container class="users" *ngFor="let exercise of exercises">
+              <ng-container *ngIf="targetExerciseId != exercise.id"> 
+                  <div class="col-sm-5 col-xs-6 tital " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">Exercise Name:</div>
+                  <div class="col-sm-7 col-xs-6 " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">{{exercise.title}}</div>
+      
+                  <div class="col-sm-5 col-xs-6 tital " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">Exercise Url:</div>
+                  <div class="col-sm-7 col-xs-6 " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">{{exercise.photo_link}}</div>
+      
+                  <div class="col-sm-5 col-xs-6 tital " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">Needed Equipment:</div>
+                  <div class="col-sm-7 col-xs-6 " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">{{exercise.equipment_needed}}</div>
+      
+                  <div class="col-sm-5 col-xs-6 tital " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">Tips:</div>
+                  <div class="col-sm-7 col-xs-6 " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">{{exercise.how_to_do_tips}}</div>
+      
+                  <button class="btn btn-warning" (click)="chooseExercise(exercise)">Update Exercise</button><br>
+                  <!-- <div class="users"></div> -->
+              </ng-container >
+              <ng-container *ngIf="exercise.id == targetExerciseId">
+                <br> <input type="text" style="width: 20%;" class="form-control" [(ngModel)]="exercise.title">
+                <input type="text" style="width: 20%;" class="form-control" [(ngModel)]="exercise.photo_link">
+                <input type="text" style="width: 20%;" class="form-control" [(ngModel)]="exercise.equipment_needed">
+                <input type="text" style="width: 20%;" class="form-control" [(ngModel)]="exercise.how_to_do_tips">
+                <button class="btn btn-success" (click)="updateExercise(targetExCategory, targetExercise)">Save To Backend</button>
+                <button class="btn btn-danger" (click)="deleteExercise(targetExCategory, targetExercise)">Delete From Backend</button><br>
+              </ng-container>
+              <div class="users"></div>
+            </ng-container>
+          </div>
+      </ng-container>
+      
+      <ng-container *ngIf="manipulateSupplementPressed">
+        <br> <div style="margin-left: 22.8%;"><input type="text" class="form-control" placeholder="Supplement Name" style="width: 26.8%;" [(ngModel)]="supplementName"> <br>
+        <input type="text" class="form-control" placeholder="Supplement Description" style="width: 26.8%;" [(ngModel)]="supplementDescription"> <br>
+        <button class="btn btn-primary" (click)="createSupplement()">Create Supplement</button><br> </div>
+      
+        <br><br> <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 22.8%; width: 20.8%">Supplements List:</p> <br>
+        <div *ngFor = "let sup of supplements">
+          <ng-container *ngIf="updateSupplementPressed">
+            <input type="text" class="form-control" [(ngModel)]="sup.title" style="margin-left: 22.8%; width: 20.8%">
+            <div class="form-group purple-border">
+                <textarea class="form-control" [(ngModel)]="sup.description" id="exampleFormControlTextarea4" rows="8" style="margin-left: 22.8%; width: 20.8%"></textarea>
+              </div>
+            <!-- <input type="text" class="form-control"  [(ngModel)]="sup.description"> -->
+            <button class="btn btn-success" style="margin-left: 22.8%;" (click)="updateSupplement(sup)">Save To Backend</button>
+            <button class="btn btn-danger" style="margin-left: 1%;" (click)="deleteThisSupplement(sup)">Delete From Backend</button>
+          </ng-container>
+      
+          <ng-container *ngIf="!updateSupplementPressed">
+              <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 22.8%; width: 20.8%">Supplement Title : {{sup.title}}</p>
+              <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 22.8%; width: 20.8%">Supplement Description: </p>
+              <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 22.8%;  width: 20.8%">{{sup.description}}</p> <br>
+          </ng-container>
+        </div>
+        <button class="btn btn-danger baget" style="margin-left: 22.8%;" *ngIf="!updateSupplementPressed" (click)="showSupplement()">Update Supplements</button>
+        <br> <button class="btn btn-dark baget" style="margin-left: 22.8%;" *ngIf="updateSupplementPressed" (click)="getSupplementsList()" (click)="showSupplement()">Back To List</button>
+      </ng-container>
+      
+      <ng-container *ngIf="maniplateDietsPressed">
+      
+        <br> <div style="margin-left: 43.4%; width: 18%"><input type="text" class="form-control" placeholder="Diet Name" [(ngModel)]="dietName"> <br>
+          <input type="text" class="form-control" placeholder="Diet Description" [(ngModel)]="dietDescription"> <br>
+          <button class="btn btn-primary" (click)="createDiet()">Create Diet</button><br> </div>
+      <br>
+        <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 43.4%;">Diet List:</p> <br>
+        <div *ngFor="let diet of diets">
+          <ng-container *ngIf="updateDietPressed">
+            <br> <input type="text" style="width: 18.8%; margin-left: 43.4%" class="form-control" [(ngModel)]="diet.title">
+            <!-- <input type="text" style="width: 18.8%; margin-left: 43.4%" class="form-control" [(ngModel)]="diet.description"> -->
+            <div class="form-group purple-border"> 
+              <textarea class="form-control" [(ngModel)]="diet.description" id="exampleFormControlTextarea4" rows="8" style="margin-left: 43.4%; width: 18.8%"></textarea>
+              </div>
+            <button class="btn btn-success" style="margin-left: 43.4%" (click)="updateDiet(diet)">Save To Backend</button>
+            <button class="btn btn-danger" style="margin-left: 1%" (click)="deleteDiet(diet)">Delete From Backend</button> <br>
+          </ng-container>
+      
+          <ng-container *ngIf="!updateDietPressed">
+              <h5 style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 43.4%; width: 18.8%">Diet Title : {{diet.title}}</h5>
+              <h5 style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 43.4%; width: 18.8%">Diet Description: </h5>
+              <h5 disabled style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 43.4%;  width: 18.8%">{{diet.description}}</h5> <br>
+          </ng-container>
+        </div>
+        <button class="btn btn-danger baget" style="margin-left: 43.4%"  *ngIf="!updateDietPressed" (click)="showDiet()">Update Diets</button>
+        <br> <button class="btn btn-primary users" style="margin-left: 43.4%"  *ngIf="updateDietPressed" (click)="getDietsList()" (click)="showDiet()">Back To List</button>
+      </ng-container>
+      </div>
+</body>

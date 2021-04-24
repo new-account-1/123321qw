@@ -1,0 +1,149 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+<div class="form-wrapper">
+<ng-container *ngIf="!updateUserProfile">
+  <div class="container" style="margin-left: 27%; margin-top: 5%;">
+    <div class="row">        
+      <div class="col-md-7" style="position:relative;">
+        <div class="panel panel-default">
+          <div class="panel-heading">  
+            <h4>User Profile</h4>
+          </div>
+          <div class="panel-body">
+      
+            <div class="box box-info">
+          
+              <div class="box-body">
+                       <div class="col-sm-6">
+                         <div align="center"> <img alt="User Picture" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> 
+                        </div>
+                        <br> 
+                      </div>
+                      <div class="col-sm-6">
+                        <h4 style="color:#00b1b1;">{{firstName}} {{secondName}}</h4>
+                      </div>
+                      <div class="clearfix"></div>
+                      <hr style="margin:5px 0 5px 0;">
+            
+                      <div class="col-sm-5 col-xs-6 tital " >First Name:</div>
+                      <div class="col-sm-7 ">{{firstName}}</div>
+                      <div class="clearfix"></div>
+                      <div class="bot-border"></div>
+  
+                      <div class="col-sm-5 col-xs-6 tital " >Last Name:</div>
+                      <div class="col-sm-7"> {{secondName}}</div>
+                      <div class="clearfix"></div>
+                      <div class="bot-border"></div>
+  
+                      <div class="col-sm-5 col-xs-6 tital " >Count of Tasks taken:</div>
+                      <div class="col-sm-7">{{taskCount}}</div>
+                      
+                      <div class="clearfix"></div>
+                      <div class="bot-border"></div>
+  
+                      <div class="col-sm-5 col-xs-6 tital " >Body Test results:</div>
+                      <div class="col-sm-7">{{overallBodyTest}}</div>
+  
+                      <div class="clearfix"></div>
+                      <div class="bot-border"></div>
+  
+                      <div class="col-sm-5 col-xs-6 tital " >Allergies:</div>
+                      <div class="col-sm-7">{{allergies}}</div>
+  
+   
+                      <div class="clearfix"></div>  
+                      <div class="bot-border"></div>
+  
+  
+                      <div class="col-sm-5 col-xs-6 tital " >Blood Pressure:</div>
+                      <div class="col-sm-7">{{bloodPressure}}</div>
+  
+   
+                      <div class="clearfix"></div>
+  
+                      <div class="bot-border"></div>
+  
+                      <button class="btn btn-primary" (click)="showProfile()">Change Profile</button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>  
+            </div>
+            </div>
+</ng-container>
+
+
+<ng-container *ngIf="updateUserProfile">
+    <div class="container" style="margin-left: 27%; margin-top: 5%;">
+      <div class="row">        
+        <div class="col-md-7 ">
+          <div class="panel panel-default">
+            <div class="panel-heading">  
+              <h4>User Profile</h4>
+            </div>
+            <div class="panel-body">
+        
+              <div class="box box-info">
+            
+                <div class="box-body">
+                         <div class="col-sm-6">
+                           <div  align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> 
+                          </div>
+                          <br> 
+                        </div>
+                        <div class="col-sm-6">
+                          <h4 style="color:#00b1b1;">{{firstName}} {{secondName}}</h4>
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr style="margin:5px 0 5px 0;">
+              
+                        <div class="col-sm-5 col-xs-6 tital " >First Name:</div>
+                        <div class="col-sm-7"><input type="text" [(ngModel)]="firstName"></div>
+                        <div class="clearfix"></div>
+                        <div class="bot-border"></div>
+    
+                        <div class="col-sm-5 col-xs-6 tital " >Last Name:</div>
+                        <div class="col-sm-7"> <input type="text" [(ngModel)]="secondName"></div>
+                        <div class="clearfix"></div>
+                        <div class="bot-border"></div>
+    
+                        <div class="col-sm-5 col-xs-6 tital " >Count of Tasks taken:</div>
+                        <div class="col-sm-7">{{taskCount}}</div>
+                        
+                        <div class="clearfix"></div>
+                        <div class="bot-border"></div>
+    
+                        <div class="col-sm-5 col-xs-6 tital " >Body Test results:</div>
+                        <div class="col-sm-7">{{overallBodyTest}}</div>
+    
+                        <div class="clearfix"></div>
+                        <div class="bot-border"></div>
+    
+                        <div class="col-sm-5 col-xs-6 tital " >Allergies:</div>
+                        <div class="col-sm-7">{{allergies}}</div>
+    
+     
+                        <div class="clearfix"></div>  
+                        <div class="bot-border"></div>
+    
+    
+                        <div class="col-sm-5 col-xs-6 tital " >Blood Pressure:</div>
+                        <div class="col-sm-7">{{bloodPressure}}</div>
+     
+                        <div class="clearfix"></div>
+    
+                        <div class="bot-border"></div>
+    
+                        <button class="btn btn-success" (click)="showProfile()" (click)="saveProfile(user_id)">Save</button>
+                      </div>
+                    </div>
+                  </div> 
+                </div>
+              </div>  
+              </div>
+              </div>
+  </ng-container>
+  </div>
